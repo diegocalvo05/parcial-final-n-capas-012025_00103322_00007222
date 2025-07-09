@@ -8,6 +8,8 @@ docker-compose up --build
 ### Documentación
 En el root de la aplicación, hay una carpeta con capturas
 
+La colleccion de insomnia esta en el resources 'pfinal_insomnia'
+
 -El nombre de la base de datos es 'parcialfinal'
 
 ### Estudiantes
