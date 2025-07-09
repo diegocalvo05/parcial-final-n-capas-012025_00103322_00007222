@@ -41,4 +41,9 @@ public class GlobalExceptionHandler {
                 .toList();
         return ResponseBuilderUtil.buildErrorResponse(e, HttpStatus.BAD_REQUEST, errors);
     }
+
+    @ExceptionHandler(ForbbidenException.class)
+    public ResponseEntity<ErrorResponse> handleForbbidenException(ForbbidenException e) {
+        return ResponseBuilderUtil.buildErrorResponse(e, HttpStatus.FORBIDDEN, e.getMessage());
+    }
 }

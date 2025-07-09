@@ -60,6 +60,7 @@ public class UserServiceImpl implements UserService {
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setNombreRol("ROLE_" + user.getNombreRol());
 
         return UserMapper.toDTO(userRepository.save(UserMapper.toEntityCreate(user)));
     }

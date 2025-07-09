@@ -4,8 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum Rol {
-    USER("USER"),
-    TECH("TECH");
+    USER("ROLE_USER"),
+    TECH("ROLE_TECH");
 
     private final String value;
 

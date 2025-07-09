@@ -31,10 +31,11 @@ public class TicketController {
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('USER', 'TECH')")
-    public ResponseEntity<GeneralResponse> getTicketById(@PathVariable Long id) {
+    public ResponseEntity<GeneralResponse> getTicketById(@PathVariable("id") Long id) {
+        System.out.println("ID: " + id);
         TicketResponse ticket = ticketService.getTicketById(id);
         if (ticket == null) {
-            throw new BadTicketRequestException("Ticket no encontrado");
+            throw new BadTicketRequestException("Ticket no encontrado en request");
         }
         return ResponseBuilderUtil.buildResponse("Ticket found", HttpStatus.OK, ticket);
     }
