@@ -5,7 +5,7 @@ Este repositorio contiene un proyecto para evaluar y practicar los conceptos de 
 ### Comando para correr
 docker-compose up --build
 
-###Documentación
+### Documentación
 En el root de la aplicación, hay una carpeta con capturas
 
 -El nombre de la base de datos es 'parcialfinal'
