@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # Base de datos PostgreSQL
+  postgres-db:
+    image: postgres:15
+    container_name: support-postgres-db
+    environment:
+      POSTGRES_DB: parcialfinal
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - support-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # pgAdmin para administrar PostgreSQL
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: support-pgadmin
+    depends_on:
+      - postgres-db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    networks:
+      - support-network
+
+volumes:
+  postgres_data:
+
+networks:
+  support-network:
+    driver: bridge
