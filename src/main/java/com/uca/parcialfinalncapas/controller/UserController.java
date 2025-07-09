@@ -1,15 +1,12 @@
 package com.uca.parcialfinalncapas.controller;
 
-import com.uca.parcialfinalncapas.dto.request.UserCreateRequest;
 import com.uca.parcialfinalncapas.dto.request.UserUpdateRequest;
 import com.uca.parcialfinalncapas.dto.response.GeneralResponse;
 import com.uca.parcialfinalncapas.dto.response.UserResponse;
-import com.uca.parcialfinalncapas.entities.User;
 import com.uca.parcialfinalncapas.service.UserService;
 import com.uca.parcialfinalncapas.utils.ResponseBuilderUtil;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,12 +34,6 @@ public class UserController {
     public ResponseEntity<GeneralResponse> getUserByCorreo(@PathVariable String correo) {
         UserResponse user = userService.findByCorreo(correo);
         return ResponseBuilderUtil.buildResponse("Usuario encontrado", HttpStatus.OK, user);
-    }
-
-    @PostMapping
-    public ResponseEntity<GeneralResponse> createUser(@Valid @RequestBody UserCreateRequest user) {
-        UserResponse createdUser = userService.save(user);
-        return ResponseBuilderUtil.buildResponse("Usuario creado correctamente", HttpStatus.CREATED, createdUser);
     }
 
     @PutMapping

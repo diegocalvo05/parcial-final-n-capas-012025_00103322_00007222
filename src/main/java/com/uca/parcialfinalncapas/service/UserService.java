@@ -1,5 +1,6 @@
 package com.uca.parcialfinalncapas.service;
 
+import com.uca.parcialfinalncapas.dto.request.LoginRequest;
 import com.uca.parcialfinalncapas.dto.request.UserCreateRequest;
 import com.uca.parcialfinalncapas.dto.request.UserUpdateRequest;
 import com.uca.parcialfinalncapas.dto.response.UserResponse;
@@ -8,6 +9,9 @@ import com.uca.parcialfinalncapas.entities.User;
 import java.util.List;
 
 public interface UserService {
+
+    String login(LoginRequest loginRequest);
+
     /**
      * Busca un usuario por su correo electrónico.
      *

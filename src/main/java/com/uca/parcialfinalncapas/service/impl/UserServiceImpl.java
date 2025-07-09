@@ -1,14 +1,21 @@
 package com.uca.parcialfinalncapas.service.impl;
 
+import com.uca.parcialfinalncapas.dto.request.LoginRequest;
 import com.uca.parcialfinalncapas.dto.request.UserCreateRequest;
 import com.uca.parcialfinalncapas.dto.request.UserUpdateRequest;
 import com.uca.parcialfinalncapas.dto.response.UserResponse;
 import com.uca.parcialfinalncapas.entities.User;
 import com.uca.parcialfinalncapas.exceptions.UserNotFoundException;
 import com.uca.parcialfinalncapas.repository.UserRepository;
+import com.uca.parcialfinalncapas.security.JwtProvider;
 import com.uca.parcialfinalncapas.service.UserService;
 import com.uca.parcialfinalncapas.utils.mappers.UserMapper;
 import lombok.AllArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +24,27 @@ import java.util.List;
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
+    private final AuthenticationManager authenticationManager;
+    private final JwtProvider jwtProvider;
+    private final PasswordEncoder passwordEncoder;
+
+
+    @Override
+    public String login(LoginRequest loginRequest) {
+        // Authenticates the user using the provided username and password
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        loginRequest.getCorreo(),
+                        loginRequest.getPassword()
+                )
+        );
+
+        // Sets the authentication in Spring Security's context
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        // Generates a JWT token for the authenticated user
+        return jwtProvider.generateToken(authentication);
+    }
 
     @Override
     public UserResponse findByCorreo(String correo) {
@@ -30,6 +58,8 @@ public class UserServiceImpl implements UserService {
         if (userRepository.findByCorreo(user.getCorreo()).isPresent()) {
             throw new UserNotFoundException("Ya existe un usuario con el correo: " + user.getCorreo());
         }
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         return UserMapper.toDTO(userRepository.save(UserMapper.toEntityCreate(user)));
     }
