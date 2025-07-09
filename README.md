@@ -2,6 +2,9 @@
 
 Este repositorio contiene un proyecto para evaluar y practicar los conceptos de seguridad en aplicaciones Spring Boot usando JWT, roles y Docker.
 
+### Comando para correr
+docker-compose up --build
+
 ### Estudiantes
 - **Nombre del estudiante 1**: Diego Calvo Solis - 00103322
 - **Nombre del estudiante 2**: Diego Fernando Hernández Torres - 00007222
