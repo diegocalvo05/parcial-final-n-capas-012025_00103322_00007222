@@ -1,0 +1,394 @@
+type: collection.insomnia.rest/5.0
+name: Parcial Final N-Capas
+meta:
+  id: wrk_ae2403ce15ec45ba9edc559a4f089f12
+  created: 1752024854231
+  modified: 1752024854231
+  description: ""
+collection:
+  - name: Parcial Final N-Capas
+    meta:
+      id: fld_fe7fbc7eab854557859f99511337d9df
+      created: 1752023809089
+      modified: 1752023829013
+      sortKey: -1752023807349
+      description: ""
+    children:
+      - name: Tickets
+        meta:
+          id: fld_6352928c18a54e669c2a72f5f8cae374
+          created: 1752023809089
+          modified: 1752023809089
+          sortKey: -1752023807348
+          description: ""
+        children:
+          - url: http://localhost:8080/api/tickets/1
+            name: Delete Ticket
+            meta:
+              id: req_a693b86524fb4f4891d1000196e9ce96
+              created: 1752023809090
+              modified: 1752024432601
+              isPrivate: false
+              description: ""
+              sortKey: -1752023807347
+            method: DELETE
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/tickets
+            name: Get All Tickets
+            meta:
+              id: req_6dede8d53e0e466a94c2c22f7a277f06
+              created: 1752023809091
+              modified: 1752024441990
+              isPrivate: false
+              description: ""
+              sortKey: -1752023807346
+            method: GET
+            headers:
+              - name: Country
+                value: "{{country}}"
+            authentication:
+              type: bearer
+              disabled: false
+              token: ""
+              prefix: ""
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/tickets
+            name: Save Ticket
+            meta:
+              id: req_da4e08ef2f21443788b3b0b46d053116
+              created: 1752023809092
+              modified: 1752027256514
+              isPrivate: false
+              description: ""
+              sortKey: -1752023807345
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "titulo": "Ticket-06",
+                  "descripcion": "No me funciona encender la compu auxilio",
+                  "correoUsuario": "diegocalvo@gmail.com",
+                  "correoSoporte": "dhurtado@uca.edu.sv"
+                }
+            parameters:
+              - name: id
+                value: "1"
+                disabled: false
+                id: pair_634be2a977b94e67bc3cbb6fbe71bc5d
+            headers:
+              - name: Country
+                value: "{{country}}"
+              - name: Content-Type
+                value: application/json
+            authentication:
+              type: bearer
+              prefix: Bearer
+              token: eyJhbGciOiJIUzM4NCJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiY29ycmVvIjoiZGllZ29jYWx2b0BnbWFpbC5jb20iLCJzdWIiOiI0IiwiaWF0IjoxNzUyMDI3MjEzLCJleHAiOjE3NTIxMTM2MTN9.LZ-0JDHmvImLkGhCHrd_DlbsXxBOuT8EyLugOz9ksysgZG9_NKdgKjcYJ9JbWH4S
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/tickets/1
+            name: Get Ticket By ID
+            meta:
+              id: req_0b5fa8c67bd74281897e5410fa4cf140
+              created: 1752023809093
+              modified: 1752028321917
+              isPrivate: false
+              description: ""
+              sortKey: -1752023807344
+            method: GET
+            headers:
+              - name: Country
+                value: "{{country}}"
+            authentication:
+              type: bearer
+              token: eyJhbGciOiJIUzM4NCJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwiY29ycmVvIjoicGFibG9AZ21haWwuY29tIiwic3ViIjoiNiIsImlhdCI6MTc1MjAyODMxNCwiZXhwIjoxNzUyMTE0NzE0fQ.h-TnvgmjGTBdWuFDohZOy6nbNX1KM180EkqMtYg-ggypM3_avOmLcaE1LQ6-_jWS
+              prefix: Bearer
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/tickets
+            name: Update Ticket
+            meta:
+              id: req_3e5dc19e69cf40528fbf9717aadb8683
+              created: 1752023809100
+              modified: 1752024458729
+              isPrivate: false
+              description: ""
+              sortKey: -1752023807343
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                    "id": 6,
+                    "descripcion": "Trabajando en eso",
+                    "estado": "IN_PROGRESS",
+                    "correoSoporte": "dhurtado@uca.edu.sv"
+                }
+            parameters:
+              - name: id
+                value: "9"
+                disabled: false
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: User
+        meta:
+          id: fld_c61fb42b63b148559c7a53a18069ab27
+          created: 1752023809101
+          modified: 1752023809101
+          sortKey: -1752023807342
+          description: ""
+        children:
+          - url: http://localhost:8080/api/users/all
+            name: Get All Users
+            meta:
+              id: req_1a9db825fe434aaab8ee0eff0c31e7c5
+              created: 1752023809103
+              modified: 1752024463428
+              isPrivate: false
+              description: ""
+              sortKey: -1752023807341
+            method: GET
+            headers:
+              - name: Country
+                value: "{{country}}"
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/users/1
+            name: Delete User
+            meta:
+              id: req_fb7aac87fce74c0e87a5105f72f26b3f
+              created: 1752023809104
+              modified: 1752024468834
+              isPrivate: false
+              description: ""
+              sortKey: -1752023807340
+            method: DELETE
+            headers:
+              - name: Country
+                value: "{{country}}"
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/users
+            name: Update User
+            meta:
+              id: req_061e034a6a744fabbf0040b7277c6912
+              created: 1752023809105
+              modified: 1752024473741
+              isPrivate: false
+              description: ""
+              sortKey: -1752023807339
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "id": 1,
+                  "nombre": "Luisa Arevalo",
+                  "correo": "ldarevalo@uca.edu.sv",
+                  "password": "password123",
+                  "nombreRol": "USER"
+                }
+            headers:
+              - name: Country
+                value: "{{country}}"
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/users/ldarevalo@uca.edu.sv
+            name: Get User By Email
+            meta:
+              id: req_ee9ce2b935c94cf3badcc60eb333146d
+              created: 1752023809106
+              modified: 1752024478410
+              isPrivate: false
+              description: ""
+              sortKey: -1752023807338
+            method: GET
+            headers:
+              - name: Country
+                value: "{{country}}"
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/auth
+            name: Save User
+            meta:
+              id: req_5554d3c11a1542efac020cd2549f508e
+              created: 1752023809107
+              modified: 1752028302487
+              isPrivate: false
+              description: ""
+              sortKey: -1752023807337
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "nombre": "David Hurtado",
+                  "correo": "pablo@gmail.com",
+                  "password": "password456",
+                  "nombreRol": "USER"
+                }
+            headers:
+              - name: Country
+                value: "{{country}}"
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/auth/login
+            name: Login
+            meta:
+              id: req_d007fea8abc54c9182351d9c306a404c
+              created: 1752024983913
+              modified: 1752028312890
+              isPrivate: false
+              description: ""
+              sortKey: -1751450182567
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "correo": "pablo@gmail.com",
+                  "password": "password456"
+                }
+            headers:
+              - name: Country
+                value: "{{country}}"
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+    scripts:
+      afterResponse: ""
+      preRequest: ""
+    environment:
+      baseUrl: ""
+      country: ""
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_6b04a853561f4c2f9314d36745be7270
+    created: 1752023809110
+    modified: 1752023809110
+environments:
+  name: Base Environment
+  meta:
+    id: env_a7b4935c1dac4c31b9badfb21911b500
+    created: 1752023809108
+    modified: 1752024234015
+    isPrivate: false
+  data:
+    baseUrl: http://localhost:8080/
